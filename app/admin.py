@@ -8,6 +8,7 @@ from .models import *
 admin.site.register(SocialLink)
 admin.site.register(Trailer)
 admin.site.register(Slider)
+admin.site.register(Advertisement)
 admin.site.register(TrailerItem)
 admin.site.register(Celebrity)
 admin.site.register(News)

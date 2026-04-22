@@ -87,14 +87,14 @@ class News(models.Model):
         return self.title
 
 # class tweet with just content (string/textfield)
-class Tweet:
+class Tweet(models.Model):
     content = models.TextField() # is this the string?
 
     def __str__(self):
         return self.content[:50] # ':50' shows the first 50 characters in the admin panel as a preview
 
 # class movietheater: stores movies shown in the 'in theaters' tab
-class MovieTheater:
+class MovieTheater(models.Model):
     type = models.CharField(max_length=20)
     img_src = models.CharField(max_length=200)
     img_width = models.IntegerField()
@@ -109,7 +109,7 @@ class MovieTheater:
         return self.movie_title
 
 # class movietv: stores movies shown in the 'on tv' tab
-class MovieTV:
+class MovieTV(models.Model):
     type = models.CharField(max_length=20)
     img_src = models.CharField(max_length=200)
     img_width = models.IntegerField()
