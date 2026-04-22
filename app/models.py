@@ -9,7 +9,7 @@ from django.db import models
 class SocialLink(models.Model):
     #idk about the ID field
     name = models.CharField(max_length=50)
-    anchor_class = models.CharField(max_length=2)
+    anchor_class = models.CharField(max_length=50) #changed to 50 
     icon_class = models.CharField(max_length=30)
     url = models.URLField(max_length=200)
 
