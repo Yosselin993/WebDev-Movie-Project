@@ -11,14 +11,14 @@ class SocialLink(models.Model):
     name = models.CharField(max_length=50)
     anchor_class = models.CharField(max_length=50) #changed to 50 
     icon_class = models.CharField(max_length=30)
-    url = models.URLField(max_length=200)
+    url = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name;
 
 class Trailer(models.Model):
     #idk about the ID field
-    trailer_URL = models.URLField(max_length=200)
+    trailer_URL = models.CharField(max_length=200)
 
     def __str__(self):
         return self.trailer_URL;
