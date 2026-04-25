@@ -42,12 +42,12 @@ class Slider(models.Model):
 # advertisement table with a 'section' field to know where the display each add
 class Advertisement(models.Model):
     section = models.CharField
-    img_src = models.CharField(max_length=20)
+    img_src = models.CharField(max_length=50) #increased the length for src path located in code
     img_width = models.IntegerField()
     img_height = models.IntegerField()
 
     def __str__(self):
-        return self.section
+        return self.img_src
     
 # trailerItem with image info, description, and duration
 class TrailerItem(models.Model):
