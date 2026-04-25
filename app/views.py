@@ -9,12 +9,13 @@ def home(request):
     sliderObj = Slider.objects.all()
     MTObj = MovieTheater.objects.all()
     adObj = Advertisement.objects.all()
-
+    CelObj = Celebrity.objects.all()
     #we need to put all the model refercences here like an array 
     context = {"SocialLink": slObj,
                 "Slider": sliderObj,
                 "MovieTheater": MTObj,
-                "Advertisement": adObj
+                "Advertisement": adObj,
+                "Celebrity": CelObj
                
               }
     template = loader.get_template("base.html");
