@@ -28,8 +28,9 @@ class Slider(models.Model):
     image_src = models.CharField(max_length=200) # file path to slides's img
     image_width = models.IntegerField()
     image_height = models.IntegerField()
-    anchor_url = models.URLField(max_length=200) # url the slide links to when clicked
+    # anchor_url = models.CharField(max_length=200) # url the slide links to when clicked # commented out this variable because it wasn't being used in code
     movie_genre = models.CharField(max_length=10)
+    movie_genre_two = models.CharField(max_length=10, blank=True, default="") #added a new variable so the second genre can be stored in the database.
     movie_title = models.CharField(max_length=20)
     lower_rating = models.CharField(max_length=5) # ex) lower = "8.5"
     upper_rating = models.CharField(max_length=5) # ex) upper = "9.0"
