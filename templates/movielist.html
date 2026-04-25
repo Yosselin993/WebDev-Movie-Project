@@ -1,0 +1,18 @@
+{% load static %}
+
+{% for i in MovieTheater %}
+	<div class="slide-it">
+		<div class="movie-item">
+			<div class="mv-img">
+				<img src="{% static i.img_src %}" alt="" width="{{i.img_width}}" height="{{i.img_height}}">
+			</div> 
+				<div class="hvr-inner">
+					<a  href="{{i.anchor_url}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+				</div>
+				<div class="title-in">
+					<h6><a href="#">{{i.movie_title}}</a></h6>
+					<p><i class="ion-android-star"></i><span>{{i.lower_rating}}</span> /{{i.upper_rating}}</p>
+				</div>
+		</div>
+	</div>
+{% endfor %}

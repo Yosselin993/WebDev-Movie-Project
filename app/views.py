@@ -7,9 +7,14 @@ from .models import *
 def home(request):
     slObj = SocialLink.objects.all()
     sliderObj = Slider.objects.all()
+    MTObj = MovieTheater.objects.all()
+    adObj = Advertisement.objects.all()
+
     #we need to put all the model refercences here like an array 
     context = {"SocialLink": slObj,
-                "Slider": sliderObj
+                "Slider": sliderObj,
+                "MovieTheater": MTObj,
+                "Advertisement": adObj
                
               }
     template = loader.get_template("base.html");
