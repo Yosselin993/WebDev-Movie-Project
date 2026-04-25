@@ -1,12 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-    
-</head>
+{% load static %}
 
 
-<body>
+<!-- Im not sure if I was suppose to copy and paste it two more times but it works... -->
 
-</body>
+{% for i in Slider %}
+    <div class="movie-item">
+	    <div class="mv-img">
+	    		<a href="{{i.url}}"><img src="{% static i.image_src %}" alt="" width="{{i.image_width}}" height="{{i.image_height}}"></a>
+	    </div>
+	    <div class="title-in">
+	    	<div class="cate">
+	    	    <span class="blue"><a href="{{i.url}}">{{i.movie_genre}}</a></span>
+				<!--If the image in the stored database has a second genre display. if not skip-->
+				{% if i.movie_genre_two %} <!--I had to add a if statment here because not all the images in the slider display two genres-->
+				 <span class="orange"><a href="{{i.url}}">{{i.movie_genre_two}}</a></span> <!--I had to create a new variable in the model so I can display/store the second genre -->
+				{% endif %}
+	    	</div>
+	    	<h6><a href="{{i.url}}">{{i.movie_title}}</a></h6>
+	    	<p><i class="ion-android-star"></i><span>{{i.lower_rating}}</span> /{{i.upper_rating}}</p>
+	    </div>
+	</div>
 
-</html>
+{% endfor %}
+
+{% for i in Slider %}
+    <div class="movie-item">
+	    <div class="mv-img">
+	    		<a href="{{i.url}}"><img src="{% static i.image_src %}" alt="" width="{{i.image_width}}" height="{{i.image_height}}"></a>
+	    </div>
+	    <div class="title-in">
+	    	<div class="cate">
+	    	    <span class="blue"><a href="{{i.url}}">{{i.movie_genre}}</a></span>
+				{% if i.movie_genre_two %}
+				 <span class="orange"><a href="{{i.url}}">{{i.movie_genre_two}}</a></span>
+				{% endif %}
+	    	</div>
+	    	<h6><a href="{{i.url}}">{{i.movie_title}}</a></h6>
+	    	<p><i class="ion-android-star"></i><span>{{i.lower_rating}}</span> /{{i.upper_rating}}</p>
+	    </div>
+	</div>
+
+{% endfor %}
+
+
+{% for i in Slider %}
+    <div class="movie-item">
+	    <div class="mv-img">
+	    		<a href="{{i.url}}"><img src="{% static i.image_src %}" alt="" width="{{i.image_width}}" height="{{i.image_height}}"></a>
+	    </div>
+	    <div class="title-in">
+	    	<div class="cate">
+	    	    <span class="blue"><a href="{{i.url}}">{{i.movie_genre}}</a></span>
+				{% if i.movie_genre_two %}
+				 <span class="orange"><a href="{{i.url}}">{{i.movie_genre_two}}</a></span>
+				{% endif %}
+	    	</div>
+	    	<h6><a href="{{i.url}}">{{i.movie_title}}</a></h6>
+	    	<p><i class="ion-android-star"></i><span>{{i.lower_rating}}</span> /{{i.upper_rating}}</p>
+	    </div>
+	</div>
+
+{% endfor %}
+

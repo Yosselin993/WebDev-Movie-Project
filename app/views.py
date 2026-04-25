@@ -6,8 +6,10 @@ from .models import *
 # Create your views here.
 def home(request):
     slObj = SocialLink.objects.all()
+    sliderObj = Slider.objects.all()
     #we need to put all the model refercences here like an array 
-    context = {"SocialLink": slObj
+    context = {"SocialLink": slObj,
+                "Slider": sliderObj
                
               }
     template = loader.get_template("base.html");
