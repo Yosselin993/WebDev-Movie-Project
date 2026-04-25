@@ -245,9 +245,6 @@
 				 <!--we have to go to admin on browser to input that information-->
 				{% for i in SocialLink %}
 				<a href="{{i.url}}"><i class="{{i.icon_class}}"></i></a>
-				<!-- <a href="#"><i class="ion-social-twitter"></i></a>
-				<a href="#"><i class="ion-social-googleplus"></i></a>
-				<a href="#"><i class="ion-social-youtube"></i></a> -->
 				{% endfor %}
 			</div>
 	    	<div  class="slick-multiItemSlider">
@@ -276,6 +273,7 @@
 				            <div class="row">
 				            	<div class="slick-multiItem">
 									<!--  DB  -->
+									<!-- Added the movielisting for popular -->
 									{% include "movielist.html" %}
 				            	</div>
 				            </div>
@@ -813,6 +811,7 @@
 				<div class="sidebar">
 					<div class="ads">
 						<!-- DB -->
+						 <!-- Adding the first Advertisement into the database -->
 						{% for i in Advertisement %}
 							<!-- <img src="images/uploads/ads1.png" alt="" width="336" height="296"> -->
 							<img src="{% static i.img_src %}" alt="" width="{{i.img_width}}" height="{{i.img_height}}">
@@ -822,34 +821,16 @@
 					<div class="celebrities">
 						<h4 class="sb-title">Spotlight Celebrities</h4>
 						<!-- DB -->
+						 <!-- Adding Celebrities to the database -->
+						{% for i in Celebrity %}
 						<div class="celeb-item">
-							<a href="#"><img src="images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
+							<a href="#"><img src="{% static i.celebrity_url %}" alt="" width="{{i.img_width}}" height="{{i.img_height}}"></a>
 							<div class="celeb-author">
-								<h6><a href="#">Samuel N. Jack</a></h6>
-								<span>Actor</span>
+								<h6><a href="#">{{i.celebrity_name}}</a></h6>
+								<span>{{i.celebrity_type}}</span>
 							</div>
 						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Benjamin Carroll</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Beverly Griffin</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Justin Weaver</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
+						{% endfor %}
 						<a href="#" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
 					</div>
 				</div>
