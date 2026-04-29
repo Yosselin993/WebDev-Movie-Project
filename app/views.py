@@ -10,12 +10,23 @@ def home(request):
     MTObj = MovieTheater.objects.all()
     adObj = Advertisement.objects.all()
     CelObj = Celebrity.objects.all()
+
+    # adding the trailer(+ traileritem) and news(+ tweet) section 
+    trailerObj = Trailer.objects.all()
+    trailerItemObj = TrailerItem.objects.all()
+    newsObj = News.objects.all()
+    tweetObj = Tweet.objects.all()
+
     #we need to put all the model refercences here like an array 
     context = {"SocialLink": slObj,
                 "Slider": sliderObj,
                 "MovieTheater": MTObj,
                 "Advertisement": adObj,
-                "Celebrity": CelObj
+                "Celebrity": CelObj, 
+                "Trailer": trailerObj,
+                "TrailerItem": trailerItemObj,
+                "News": newsObj, 
+                "Tweet": tweetObj,
                
               }
     template = loader.get_template("base.html");
