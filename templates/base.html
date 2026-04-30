@@ -3,8 +3,6 @@
 <!--you can move the include tag where they are suppose to be in the code-->
 <!--For example line 255-->
 
-{% include "trailers.html" %}
-{% include "news.html" %}
 
 <!DOCTYPE html>
 <!--[if IE 7]>
@@ -790,15 +788,34 @@
 				<div class="videos">
 				 	<div class="slider-for-2 video-ft">
 						<!-- DB -->
-				 		<div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe>
-					    </div>
-				
-						
+						 {% for i in Trailer %} <!-- added the listings for trailer  -->
+							<div>
+								<!-- added to properly load iframe (from discord)-->
+								<iframe class="item-video" src="#" data-src="{{ i.trailer_URL }}" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+								<!-- before code -->
+								<!-- <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe> -->
+							</div>
+						{% endfor %}			
 					</div>
 					<div class="slider-nav-2 thumb-ft">
 						<!-- DB -->
-						<div class="item">
+						 {% for i in TrailerItem %}
+						 	<div class="item">
+								<div class="trailer-img">
+									<!-- adding the static file path so django finds each image -->
+									<img src="{% static i.img_src %}" alt="{{ i.img_alt }}" width="{{ i.img_width }}" height="{{ i.img_height }}">
+								</div>
+								<div class="trailer-infor">
+									<!-- description (trailer name), duration (time string) -->
+									<h4 class="desc">{{ i.description }}</h4>
+									<p>{{ i.duration }}</p>
+								</div>
+							</div>
+						{% endfor %}
+					
+
+						<!-- below is the past static code (added to db)-->
+						<!-- <div class="item">
 							<div class="trailer-img">
 								<img src="images/uploads/trailer7.jpg"  alt="photo by Barn Images" width="4096" height="2737">
 							</div>
@@ -851,9 +868,10 @@
 	                        	<h4 class="desc">Fast&Furious 8</h4>	
 	                        	<p>3:11</p>
 	                        </div>	
-						</div>
+						</div> -->
 					
 					</div>
+
 				</div>   
 			</div>
 		</div>
@@ -865,8 +883,11 @@
 		<div class="row ipad-width">
 			<div class="col-md-8">
 				<div class="ads">
-					<!-- DB -->
-					<img src="images/uploads/ads2.png" alt="" width="728" height="106">
+					{% for i in NewsAd %}
+						<!-- DB -->
+						<!-- <img src="images/uploads/ads2.png" alt="" width="728" height="106"> -->
+						<img src="{% static i.img_src %}" alt="" width="{{ i.img_width }}" height="{{ i.img_height }}">
+					{% endfor %}
 				</div>
 				<div class="title-hd">
 					<h2>Latest news</h2>
@@ -874,21 +895,24 @@
 				<div class="tabs">
 				    <div class="tab-content">
 				        <div id="tab31" class="tab active">
-				            <div class="row">
-				            	<div class="blog-item-style-1">
-									<!-- DB -->
-				            		<img src="images/uploads/blog-it1.jpg" alt="" width="170" height="250">
-				            		<div class="blog-it-infor">
+							<!-- DB -->
+							 {% for i in FeaturedNews %} <!--looping thorugh featuredNews-->
+							 <div class="row">
+								<div class="blog-item-style-1">
+									<img src="{% static i.img_src %}" alt="{{ i.img_alt }}" width="{{ i.img_width }}" height="{{ i.img_height }}">
+									<div class="blog-it-infor">
 										<!-- DB -->
-				            			<h3><a href="#">Brie Larson to play first female white house candidate Victoria Woodull in Amazon film</a></h3>
-				            			<span class="time">13 hours ago</span>
-				            			<p>Exclusive: <span>Amazon Studios </span>has acquired Victoria Woodhull, with Oscar winning Room star <span>Brie Larson</span> polsed to produce, and play the first female candidate for the presidency of the United States. Amazon bought it in a pitch package deal. <span> Ben Kopit</span>, who wrote the Warner Bros film <span>Libertine</span> that has...</p>
-				            		</div>
-				            	</div>
-				            </div>
+										 <h3><a href="#">{{ i.title }}</a></h3>
+										 <span class="time">{{ i.time }}</span>
+										 <p>{{ i.content }}</p>
+									</div>
+								</div>
+							 </div>
+							 {% endfor %}
 				        </div>				        
-				    </div>
+				    </div> 
 				</div>
+
 				<div class="morenew">
 					<div class="title-hd">
 						<h3>More news on Blockbuster</h3>
@@ -897,6 +921,31 @@
 					<div class="more-items">
 						<div class="left">
 							<!-- DB -->
+							 {% for i in MoreNews %}
+							 	{% if forloop.counter|divisibleby:2 == False %} <!-- checking for odd items so they go on the left-->
+								<div class="more-it">
+									<h6><a href="#">{{ i.title }}</a></h6>
+									<span class="time">{{ i.time }}</span>
+								</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+						<div class="right">
+							{% for i in MoreNews %}
+								{% if forloop.counter|divisibleby:2 %} <!--even items go to the right-->
+								<div class="more-it">
+									<h6><a href="#">{{ i.title }}</a></h6>
+									<span class="time">{{ i.time }}</span>
+								</div>
+								{% endif %}
+							{% endfor %}
+						</div>			
+					</div>
+					
+					<!-- before code -->
+					<!-- <div class="more-items">
+						<div class="left">
+							 DB 
 							<div class="more-it">
 								<h6><a href="#">Michael Shannon Frontrunner to play Cable in “Deadpool 2”</a></h6>
 								<span class="time">13 hours ago</span>
@@ -907,7 +956,7 @@
 							</div>
 						</div>
 						<div class="right">
-							<!-- DB -->
+							 DB 
 							<div class="more-it">
 								<h6><a href="#">Laura Dern in talks to join Justin Kelly’s biopic “JT Leroy”</a></h6>
 								<span class="time">13 hours ago</span>
@@ -917,7 +966,8 @@
 								<span class="time">13 hours ago</span>
 							</div>
 						</div>
-					</div>
+					</div> -->
+
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -926,13 +976,16 @@
 						<h4 class="sb-title">Tweet to us</h4>
 						<div class="slick-tw">
 							<!--  DB  -->
-							<div class="tweet item" id="">
-								<!-- Put your twiter id here -->
-								 Just watched Interstellar again 🚀🌌—still blown away by the visuals, the emotion, and that mind-bending journey through space and time. A true masterpiece that never gets old. ⭐️ #MovieNight #SciFiD
-							</div>
-							<div class="tweet item" id="">
+							{% for i in Tweet %}
+								<div class="tweet item" id="">
+									<!-- Put your twiter id here -->
+									 {{ i.content }}
+									<!-- Just watched Interstellar again 🚀🌌—still blown away by the visuals, the emotion, and that mind-bending journey through space and time. A true masterpiece that never gets old. ⭐️ #MovieNight #SciFiD -->
+								</div>
+							{% endfor %}
+							<!-- <div class="tweet item" id=""> -->
 								<!-- Put your 2nd twiter account id here -->
-							</div>
+							<!-- </div> -->
 						</div>					
 					</div>
 				</div>

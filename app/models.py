@@ -41,7 +41,7 @@ class Slider(models.Model):
 
 # advertisement table with a 'section' field to know where the display each add
 class Advertisement(models.Model):
-    section = models.CharField
+    section = models.CharField(max_length=200) # added a max length to ads
     img_src = models.CharField(max_length=50) #increased the length for src path located in code
     img_width = models.IntegerField()
     img_height = models.IntegerField()
