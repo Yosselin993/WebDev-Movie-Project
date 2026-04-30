@@ -14,7 +14,11 @@ def home(request):
     # adding the trailer(+ traileritem) and news(+ tweet) section 
     trailerObj = Trailer.objects.all()
     trailerItemObj = TrailerItem.objects.all()
-    newsObj = News.objects.all()
+    
+    featuredNewsObj = News.objects.filter(section="featured") # splitting news to featured and more to match base
+    moreNewsObj = News.objects.filter(section="more")
+
+
     tweetObj = Tweet.objects.all()
 
     #we need to put all the model refercences here like an array 
@@ -25,7 +29,8 @@ def home(request):
                 "Celebrity": CelObj, 
                 "Trailer": trailerObj,
                 "TrailerItem": trailerItemObj,
-                "News": newsObj, 
+                "FeaturedNews": featuredNewsObj,
+                "MoreNews": moreNewsObj, 
                 "Tweet": tweetObj,
                
               }
