@@ -790,7 +790,8 @@
 						<!-- DB -->
 						 {% for i in Trailer %} <!-- added the listings for trailer  -->
 							<div>
-								<iframe class="item-video" src="#" data-src="{{ i.trailer_URL }}"></iframe>
+								<!-- added to properly load iframe (from discord)-->
+								<iframe class="item-video" src="#" data-src="{{ i.trailer_URL }}" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 								<!-- before code -->
 								<!-- <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe> -->
 							</div>
