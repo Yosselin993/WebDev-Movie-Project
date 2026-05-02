@@ -10,6 +10,7 @@ def home(request):
     MTObj = MovieTheater.objects.all()
     adObj = Advertisement.objects.all()
     CelObj = Celebrity.objects.all()
+    MTVObj = MovieTV.objects.all()
 
     # adding the trailer(+ traileritem) and news(+ tweet) section 
     trailerObj = Trailer.objects.all()
@@ -34,7 +35,7 @@ def home(request):
                 "MoreNews": moreNewsObj, 
                 "Tweet": tweetObj,
                 "NewsAd": newsAdObj,
-               
+                "MovieTV": MTVObj
               }
     template = loader.get_template("base.html");
     return HttpResponse(template.render(context, request))
